@@ -8,14 +8,10 @@ print()
 
 import urllib.request
 import urllib.parse
-import json as j
-from bs4 import BeautifulSoup as soup
-import re
 
-def cleanhtml(raw_html):
-  cleanr = re.compile('<.*?>')
-  cleantext = re.sub(cleanr, '', raw_html)
-  return(cleantext)
+from bs4 import BeautifulSoup as soup
+
+
 
 def encode(query,**kwargs):
     safesearch = '1' #if safesearch else '-1'
@@ -33,7 +29,9 @@ def encode(query,**kwargs):
     encparams = urllib.parse.urlencode(params)
     url = 'http://api.duckduckgo.com/?' + encparams
     return(url)
-null=None
+
+null=None#some json variable are none.. to support it it is present
+
 class Abstract(object):
     def __init__(self, json):
         self.html = json['Abstract']
@@ -48,11 +46,8 @@ def results(query):
         re=urllib.request.Request(encode(query))
     response=urllib.request.urlopen(re)
     web_content=(response.read())
-    web_content=str(web_content,'utf-8')
-    #web_content=web_content[web_content.find('{'):web_content.rfind('}')+1]
-    #print('web',web_content)
-    
-    json=dict(eval(web_content))#coverting bytes to string
+    web_content=str(web_content,'utf-8')#coverting bytes to string    
+    json=dict(eval(web_content))
     response.close()
     content=Abstract(json)
     if content.text=='':
