@@ -1,4 +1,4 @@
-# Search_the_web
+# Web_Ninja
 
 This project tries to create web search add-ons for chatbots , however it can be modified for other uses
 ----
