@@ -1,6 +1,7 @@
 # Search_the_web
 
 This project tries to create web search add-ons for chatbots , however it can be modified for other uses
+----
 
  *The wikipedia searcher can modified extensively and used extensively but it requires wikipedia module to be installed in py3(needs internet)
 
